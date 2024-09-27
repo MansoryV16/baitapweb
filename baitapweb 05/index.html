@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Các Tính Toán Số Học</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #2c3e50;
+        }
+        input {
+            margin: 5px 0;
+            padding: 5px;
+        }
+        button {
+            margin: 10px 0;
+            padding: 7px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .result {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tính Tổng từ 1 đến n</h2>
+    <input type="number" id="nTong" placeholder="Nhập n">
+    <button onclick="tinhTong()">Tính Tổng</button>
+    <p class="result" id="resultTong"></p>
+
+    <h2>Tính Tổng các số chẵn từ 1 đến n</h2>
+    <input type="number" id="nChan" placeholder="Nhập n">
+    <button onclick="tinhTongChan()">Tính Tổng Số Chẵn</button>
+    <p class="result" id="resultChan"></p>
+
+    <h2>Tính Tổng các số lẻ từ 1 đến n</h2>
+    <input type="number" id="nLe" placeholder="Nhập n">
+    <button onclick="tinhTongLe()">Tính Tổng Số Lẻ</button>
+    <p class="result" id="resultLe"></p>
+
+    <h2>Kiểm Tra Số Nguyên Tố</h2>
+    <input type="number" id="nNguyenTo" placeholder="Nhập n">
+    <button onclick="kiemTraNguyenTo()">Kiểm Tra</button>
+    <p class="result" id="resultNguyenTo"></p>
+
+    <h2>Tìm UCLN của 2 số a và b</h2>
+    <input type="number" id="aValue" placeholder="Nhập a">
+    <input type="number" id="bValue" placeholder="Nhập b">
+    <button onclick="timUCLN()">Tìm UCLN</button>
+    <p class="result" id="resultUCLN"></p>
+
+    <script>
+        // Tính tổng từ 1 đến n
+        function tinhTong() {
+            let n = document.getElementById("nTong").value;
+            let sum = 0;
+            for (let i = 1; i <= n; i++) {
+                sum += i;
+            }
+            document.getElementById("resultTong").innerHTML = "Tổng từ 1 đến " + n + " là: " + sum;
+        }
+
+        // Tính tổng các số chẵn từ 1 đến n
+        function tinhTongChan() {
+            let n = document.getElementById("nChan").value;
+            let sum = 0;
+            for (let i = 2; i <= n; i += 2) {
+                sum += i;
+            }
+            document.getElementById("resultChan").innerHTML = "Tổng các số chẵn từ 1 đến " + n + " là: " + sum;
+        }
+
+        // Tính tổng các số lẻ từ 1 đến n
+        function tinhTongLe() {
+            let n = document.getElementById("nLe").value;
+            let sum = 0;
+            for (let i = 1; i <= n; i += 2) {
+                sum += i;
+            }
+            document.getElementById("resultLe").innerHTML = "Tổng các số lẻ từ 1 đến " + n + " là: " + sum;
+        }
+
+        // Kiểm tra số nguyên tố
+        function kiemTraNguyenTo() {
+            let n = document.getElementById("nNguyenTo").value;
+            let isPrime = true;
+            if (n < 2) {
+                isPrime = false;
+            } else {
+                for (let i = 2; i <= Math.sqrt(n); i++) {
+                    if (n % i === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+            }
+            document.getElementById("resultNguyenTo").innerHTML = isPrime ? n + " là số nguyên tố" : n + " không phải là số nguyên tố";
+        }
+
+        // Tìm UCLN của 2 số a và b
+        function timUCLN() {
+            let a = document.getElementById("aValue").value;
+            let b = document.getElementById("bValue").value;
+            while (b != 0) {
+                let temp = b;
+                b = a % b;
+                a = temp;
+            }
+            document.getElementById("resultUCLN").innerHTML = "UCLN của hai số là: " + a;
+        }
+    </script>
+
+</body>
+</html>
